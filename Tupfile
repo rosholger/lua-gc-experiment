@@ -1,0 +1,4 @@
+#: foreach *.cpp |> g++ -I/usr/include/SDL2 -I/home/holger/dakom/experiment/lua-5.3.3/src -g -std=gnu++11 -D_REENTRANT -c %f |> %B.o
+#: foreach SDL*.c |> g++ -I/usr/include/SDL2 -g -D_REENTRANT -c %f |> %B.o
+: main.cpp |> g++ -rdynamic -Og -g -I/usr/include/SDL2 -I/home/holger/dakom/experiment/lua-5.3.3/src -g -std=gnu++11 -D_REENTRANT -c %f |> %B.o
+: *.o |> g++ -rdynamic -Og %f -L/usr/lib/x86_64-linux-gnu -g -L/home/holger/dakom/experiment/lua-5.3.3/src -llua -lSDL2 -ldl -lm -o %o |> exper
